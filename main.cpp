@@ -15,12 +15,20 @@ Location: 0x4353 Error Value: 0xFFFFFFFF
 
 
 DigitalOut myled(LED1);
-UnbufferedSerial pc(USBRX, USBTX); /* This script appears to be for a previous version of mbed, 
+UnbufferedSerial pc(USBTX, USBRX); /* This script appears to be for a previous version of mbed, 
 to fix we wil have to change the coding for the mbed 6 version aswell as any other errors 
 unbufferredSerial added above, USBRX and TX need to swapped for proper order*/
 
-UnbufferedSerial dev(PA_9, PA_10); /* Pin nomenclature is incorrect as use of "Serial" in mbed 6. 
+UnbufferedSerial dev(PA_0, PA_1); /* Pin nomenclature is incorrect as use of "Serial" in mbed 6. 
 UnbufferedSerial added here. Pins changed to proper format, issue may not be solved!!   */
+
+/* + MbedOS Error Info ++
+Error Status: 0x80010130 Code: 304 Module: 1
+Error Message: pinmap not found for peripheral
+Location: 0x8007CB1
+Error Value: 0x17
+
+found when running - indicating the dev pins are in use, will change these to PA_0, PA_1 which are available from the pinmap */
 
 const char* buffer; // buffer variable added for data storage
 
